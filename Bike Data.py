@@ -10,18 +10,18 @@ months = ['january', 'february', 'march', 'april', 'may', 'june','all']
 days=['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday','sunday','all']
 def get_filters():
     """
-    Asks user to specify a city, month, and day to analyze.
+    Asks user to specify a city, month, and day.
     Returns:
         (str) city - name of the city to analyze
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
+    print("Hello! Let's explore some US bikeshare data!")
 
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = input("Would you like to see data for Chicago, New York, or Washington?").lower()
     while city not in CITY_DATA:
-        print("\n\n enter one of thr 3 cities")
+        print("\n\n enter one of the availabe choices")
         city = input("Would you like to see data for Chicago, New York, or Washington?").lower()
     # get user input for month (all, january, february, ... , june)
     month=input("Which month - January, February, March, April, May, or June?").lower()
@@ -83,15 +83,13 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # display most common month
     popular_month=df['month'].mode()[0]
     print("most popular month:",popular_month)
 
-    # display the most common day of week
+    # display most common day
     popular_day=df['day_of_week'].mode()[0]
     print("most popular day of the week:",popular_day)
-
-    # display the most common start hour
 
     # extract hour from the Start Time column to create an hour column
     df['hour'] = df['Start Time'].dt.hour
@@ -133,7 +131,7 @@ def station_stats(df):
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
-    print('\nCalculating Trip Duration...\n')
+    print('\nTrip Duration...\n')
     start_time = time.time()
 
     # display total travel time
@@ -144,7 +142,7 @@ def trip_duration_stats(df):
     mean_travel=df['Trip Duration'].mean()
     print("mean travel time: ",mean_travel)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nTrip took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
